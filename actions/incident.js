@@ -9,13 +9,6 @@ export const acceptIncident = (id) => {
     }
 };
 
-export const rejectIncident = (id) => {
-    return {
-        type: 'REJECT_INCIDENT',
-        id: id
-    }
-};
-
 export const resolveIncident = (id) => {
     return {
         type: RESOLVE_INCIDENT,

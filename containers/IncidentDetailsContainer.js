@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {acceptIncident, rejectIncident, resolveIncident, uploadImage} from '../actions/incident'
+import {acceptIncident, resolveIncident, uploadImage} from '../actions/incident'
 import IncidentDetails from '../components/IncidentDetails'
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,9 +14,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onIncidentAccept: () => {
             dispatch(acceptIncident(ownProps.incident.id))
-        },
-        onIncidentReject: () => {
-            dispatch(rejectIncident(ownProps.incident.id))
         },
         onIncidentResolve: () => {
             dispatch(resolveIncident(ownProps.incident.id))

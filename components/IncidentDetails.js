@@ -29,10 +29,6 @@ class IncidentDetails extends Component {
             </TouchableOpacity></View>)
         } else if (!this.props.incident.resolved) {
             return (<View style={styles.row}>
-                <TouchableOpacity style={[styles.btn, {backgroundColor: '#a30000'}]}
-                                  onPress={() => {this.props.onIncidentReject(); Actions.pop()}}>
-                    <Text style={styles.btnText}>Sorry, No</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.btn}
                                   onPress={() => {this.props.onIncidentAccept(); Actions.pop()}}>
                     <Text style={styles.btnText}>Volunteer</Text>
