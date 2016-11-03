@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
-import {acceptIncident, rejectIncident, resolveIncident} from '../actions'
+import {fetchMineIncidents} from '../actions/mineIncidents'
+import {fetchOnGoingIncidents} from '../actions/onGoingIncidents'
 import IncidentList from '../components/IncidentList'
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,7 +10,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {}
+    return {
+        fetchOngoingIncidents: () => {
+            dispatch(fetchOnGoingIncidents())
+        },
+        fetchMineIncidents: () => {
+            dispatch(fetchMineIncidents())
+        }
+    }
 };
 
 const IncidentListContainer = connect(

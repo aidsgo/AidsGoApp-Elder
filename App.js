@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Scene, Router, Actions} from 'react-native-router-flux';
 import {connect, Provider} from 'react-redux';
+import thunkMiddleware from 'redux-thunk'
 import {createStore, applyMiddleware, compose} from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IncidentListContainer from './containers/IncidentListContainer';
@@ -8,11 +9,10 @@ import IncidentDetailsContainer from './containers/IncidentDetailsContainer';
 
 const RouterWithRedux = connect()(Router);
 import reducers from './reducers';
-const middleware = [/* ...your middleware (i.e. thunk) */];
+const middleware = [thunkMiddleware];
 const store = compose(
     applyMiddleware(...middleware)
 )(createStore)(reducers);
-
 
 class App extends Component {
     render() {

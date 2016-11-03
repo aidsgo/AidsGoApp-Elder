@@ -1,58 +1,14 @@
-const initialIncidents = [
-    {
-        id: 1,
-        name: 'Mr. Wang',
-        distance: 500,
-        time: new Date(),
-        location: {
-            lat: 34.214428,
-            lon: 108.848311
-        },
-        taken: false,
-        rejected: false,
-        volunteer: '',
-        resolved: false,
-        emergency_call: '18682306880',
-        property_management_company_phone: '18691012922',
-        images: []
-    }, {
-        id: 2,
-        name: 'Mrs. Rose',
-        distance: 800,
-        time: new Date(),
-        location: {
-            lat: 34.214428,
-            lon: 108.848311
-        },
-        taken: false,
-        rejected: false,
-        volunteer: '',
-        resolved: false,
-        emergency_call: '18682306880',
-        property_management_company_phone: '18691012922',
-        images: []
-    }, {
-        id: 3,
-        name: 'Mrs. Tomad',
-        distance: 1000,
-        time: new Date(),
-        location: {
-            lat: 34.214428,
-            lon: 108.848311
-        },
-        taken: false,
-        rejected: false,
-        volunteer: '',
-        resolved: false,
-        emergency_call: '18682306880',
-        property_management_company_phone: '18691012922',
-        images: []
-    }
-];
+import {
+    RECEIVE_ONGOING_INCIDENTS, RECEIVE_MINE_INCIDENTS, ACCEPT_INCIDENT, RESOLVE_INCIDENT, UPLOAD_IMAGE
+} from '../actions/actionTypes'
 
-const incidents = (state = initialIncidents, action) => {
+const incidents = (state = [], action) => {
     switch (action.type) {
-        case 'ACCEPT_INCIDENT':
+        case RECEIVE_ONGOING_INCIDENTS:
+            return Object.assign({}, state, action.incidents);
+        case RECEIVE_MINE_INCIDENTS:
+            return Object.assign({}, state, action.incidents);
+        case ACCEPT_INCIDENT:
             return state.map(incident => {
                 if (incident.id !== action.id) {
                     return incident;
@@ -70,7 +26,7 @@ const incidents = (state = initialIncidents, action) => {
                     rejected: true
                 })
             });
-        case 'RESOLVE_INCIDENT':
+        case RESOLVE_INCIDENT:
             return state.map(incident => {
                 if (incident.id !== action.id) {
                     return incident;
@@ -79,7 +35,7 @@ const incidents = (state = initialIncidents, action) => {
                     resolved: true
                 })
             });
-        case 'UPLOAD_IMAGE':
+        case UPLOAD_IMAGE:
             return state.map(incident => {
                 if (incident.id !== action.id) {
                     return incident;
