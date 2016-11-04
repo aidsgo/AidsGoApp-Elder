@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import {fetchMineIncidents} from '../actions/MineIncidents'
-import {fetchOnGoingIncidents} from '../actions/OnGoingIncidents'
+import {fetchMineIncidents} from '../actions/mineIncidents'
+import {fetchOnGoingIncidents} from '../actions/onGoingIncidents'
 import IncidentList from '../components/IncidentList'
 
 const mapStateToProps = (state, ownProps) => {
