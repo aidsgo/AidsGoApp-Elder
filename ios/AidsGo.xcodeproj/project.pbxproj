@@ -33,7 +33,10 @@
 		8D2A2153EDAA4AF798476F1F /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C0B8544CEE444FBDA065F8 /* FontAwesome.ttf */; };
 		8E51C376D1A445E09367CBF2 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4431A40CA5FE49F38308E149 /* libRNImagePicker.a */; };
 		ABBF314910DE403EB93A4FC5 /* libRCTJPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E05243E4CE34BC887A18B75 /* libRCTJPush.a */; };
-		B23A6C261D6E99680029EB51 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B23A6C251D6E99180029EB51 /* libRCTPushNotification.a */; };
+		B208712B1DCC79DD00CA3979 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B208712A1DCC79DD00CA3979 /* libz.tbd */; };
+		B208713C1DCC79F000CA3979 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208713B1DCC79F000CA3979 /* CoreTelephony.framework */; };
+		B208713E1DCC79FF00CA3979 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B208713D1DCC79FF00CA3979 /* Security.framework */; };
+		B20871401DCC7AC900CA3979 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B208713F1DCC7AC900CA3979 /* PushConfig.plist */; };
 		D7AC806434D6417BA7E9FAF7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BBFADDC1A1C4AADA24A56E7 /* EvilIcons.ttf */; };
 		E775A8EDFC4340BAA349CBF5 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C72485093F5D46A8AC9E25E2 /* Zocial.ttf */; };
 /* End PBXBuildFile section */
@@ -130,19 +133,19 @@
 			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
 			remoteInfo = AirMaps;
 		};
+		B21DB6421DCC7836000D8171 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 095ECE539D6C46EAA351E37B /* RCTJPush.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 919F832C1C44AB9D00D40C24;
+			remoteInfo = RCTJPush;
+		};
 		B23A6C241D6E99180029EB51 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B23A6C201D6E99180029EB51 /* RCTPushNotification.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTPushNotification;
-		};
-		B2983E441DCCBBCD00B06881 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 095ECE539D6C46EAA351E37B /* RCTJPush.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 919F832C1C44AB9D00D40C24;
-			remoteInfo = RCTJPush;
 		};
 		B29969291D6E91D40097D152 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -186,6 +189,10 @@
 		7D41BC71E9DA42DF9B6F0965 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9E05243E4CE34BC887A18B75 /* libRCTJPush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJPush.a; sourceTree = "<group>"; };
+		B208712A1DCC79DD00CA3979 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B208713B1DCC79F000CA3979 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B208713D1DCC79FF00CA3979 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B208713F1DCC7AC900CA3979 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PushConfig.plist; path = AidsGo/PushConfig.plist; sourceTree = "<group>"; };
 		B23A6C201D6E99180029EB51 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		BB9222B925B9458887280AE6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		C72485093F5D46A8AC9E25E2 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -207,7 +214,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B23A6C261D6E99680029EB51 /* libRCTPushNotification.a in Frameworks */,
+				B208713E1DCC79FF00CA3979 /* Security.framework in Frameworks */,
+				B208713C1DCC79F000CA3979 /* CoreTelephony.framework in Frameworks */,
+				B208712B1DCC79DD00CA3979 /* libz.tbd in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -326,6 +335,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				B208713F1DCC7AC900CA3979 /* PushConfig.plist */,
 			);
 			name = AidsGo;
 			sourceTree = "<group>";
@@ -379,6 +389,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B208713D1DCC79FF00CA3979 /* Security.framework */,
+				B208713B1DCC79F000CA3979 /* CoreTelephony.framework */,
+				B208712A1DCC79DD00CA3979 /* libz.tbd */,
 				13B07FAE1A68108700A75B9A /* AidsGo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* AidsGoTests */,
@@ -414,18 +427,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B23A6C211D6E99180029EB51 /* Products */ = {
+		B21DB63B1DCC7836000D8171 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B23A6C251D6E99180029EB51 /* libRCTPushNotification.a */,
+				B21DB6431DCC7836000D8171 /* libRCTJPush.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B2983E3D1DCCBBCD00B06881 /* Products */ = {
+		B23A6C211D6E99180029EB51 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B2983E451DCCBBCD00B06881 /* libRCTJPush.a */,
+				B23A6C251D6E99180029EB51 /* libRCTPushNotification.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -491,8 +504,11 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = QHP7SZN2MT;
+						DevelopmentTeam = AP9259X832;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -529,7 +545,7 @@
 					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
 				},
 				{
-					ProductGroup = B2983E3D1DCCBBCD00B06881 /* Products */;
+					ProductGroup = B21DB63B1DCC7836000D8171 /* Products */;
 					ProjectRef = 095ECE539D6C46EAA351E37B /* RCTJPush.xcodeproj */;
 				},
 				{
@@ -666,18 +682,18 @@
 			remoteRef = A671BA911D6F372C0014CFA0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B21DB6431DCC7836000D8171 /* libRCTJPush.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJPush.a;
+			remoteRef = B21DB6421DCC7836000D8171 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B23A6C251D6E99180029EB51 /* libRCTPushNotification.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRCTPushNotification.a;
 			remoteRef = B23A6C241D6E99180029EB51 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B2983E451DCCBBCD00B06881 /* libRCTJPush.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTJPush.a;
-			remoteRef = B2983E441DCCBBCD00B06881 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		B299692A1D6E91D40097D152 /* libRNVectorIcons.a */ = {
@@ -706,6 +722,7 @@
 				46CDD1DC00234075ACF045A0 /* Entypo.ttf in Resources */,
 				D7AC806434D6417BA7E9FAF7 /* EvilIcons.ttf in Resources */,
 				8D2A2153EDAA4AF798476F1F /* FontAwesome.ttf in Resources */,
+				B20871401DCC7AC900CA3979 /* PushConfig.plist in Resources */,
 				822ADD5263EC4BCCAEE2F751 /* Foundation.ttf in Resources */,
 				2E644CB3EE344D508CD5A140 /* Ionicons.ttf in Resources */,
 				840B756028604DFBBB8F8107 /* MaterialIcons.ttf in Resources */,
@@ -823,29 +840,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong Chen (CRJPBMNQ66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dong Chen (CRJPBMNQ66)";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 					"$(SRCROOT)/../node_modules/react-native-maps/ios/AirMaps/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-jpush/ios/**",
 				);
 				INFOPLIST_FILE = AidsGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aidgo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialcare.aidsgo;
 				PRODUCT_NAME = AidsGo;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ef3b8da1-9bc8-4b6e-bdd7-eeb91ce94f46";
 			};
 			name = Debug;
 		};
@@ -853,28 +870,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dong Chen (CRJPBMNQ66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dong Chen (CRJPBMNQ66)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
 					"$(SRCROOT)/../node_modules/react-native-maps/ios/AirMaps/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-jpush/ios/**",
 				);
 				INFOPLIST_FILE = AidsGo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aidgo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socialcare.aidsgo;
 				PRODUCT_NAME = AidsGo;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ef3b8da1-9bc8-4b6e-bdd7-eeb91ce94f46";
 			};
 			name = Release;
 		};

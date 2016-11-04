@@ -11,7 +11,8 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
-#import "RCTPushNotificationManager.h"
+#import "RCTJPush.h"
+
 
 @implementation AppDelegate
 
@@ -32,34 +33,27 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [RCTJPush application:application didFinishLaunchingWithOptions:launchOptions];
+
   return YES;
 }
 
 // Required to register for notifications
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-  [RCTPushNotificationManager didRegisterUserNotificationSettings:notificationSettings];
-}
-// Required for the register event.
+
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-  [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+  [RCTJPush application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
-// Required for the notification event.
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
 {
-  [RCTPushNotificationManager didReceiveRemoteNotification:notification];
-}
-// Required for the localNotification event.
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-  [RCTPushNotificationManager didReceiveLocalNotification:notification];
-}
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-  NSLog(@"%@", error);
+  [RCTJPush application:application didReceiveRemoteNotification:notification];
 }
 
-
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  [RCTJPush application:application didReceiveRemoteNotification:notification];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
 
 @end
