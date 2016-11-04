@@ -4,8 +4,22 @@ import {fetchOnGoingIncidents} from '../actions/onGoingIncidents'
 import IncidentList from '../components/IncidentList'
 
 const mapStateToProps = (state, ownProps) => {
+
+    const onGoingIncidentIds = state.onGoingIncidents.items;
+    const mineIncidentIds = state.mineIncidents.items;
+
+    let onGoingIncidents = [];
+    onGoingIncidentIds.forEach(id => {
+        onGoingIncidents.push(state.incidents[id]);
+    });
+    let mineIncidents = [];
+    mineIncidentIds.forEach(id => {
+        mineIncidents.push(state.incidents[id]);
+    });
+
     return {
-        incidents: state.incidents
+        onGoingIncidents: onGoingIncidents,
+        mineIncidents: mineIncidents
     };
 };
 

@@ -19,37 +19,18 @@ class IncidentList extends Component {
         this.setState({currentTab: tab});
     }
 
-    visibleIncidents() {
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-        if (this.state.currentTab == "mine") {
-            var filteredIncidents = this.props.incidents.filter((incident) => {
-                return incident.taken && !incident.rejected;
-            });
-            return ds.cloneWithRows(filteredIncidents);
-        } else if (this.state.currentTab == "all") {
-            var filteredIncidents = this.props.incidents.filter((incident) => {
-                return !incident.rejected;
-            });
-            return ds.cloneWithRows(filteredIncidents);
-        }
+    componentDidMount() {
+        this.props.fetchOngoingIncidents();
+        this.props.fetchMineIncidents();
     }
 
-    onImageUpload(incidentId, image) {
+    visibleIncidents() {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.state.data.forEach((incident, index) => {
-            if (incident.id == incidentId) {
-                var images = this.state.data[index].images;
-                images.push(image);
-                this.state.data[index]['images'] = images
-            }
-        });
-        let data = this.state.data;
-
-        this.setState({
-            data,
-            dataSource: ds.cloneWithRows(data)
-        });
+        if (this.state.currentTab == "mine") {
+            return ds.cloneWithRows(this.props.mineIncidents);
+        } else if (this.state.currentTab == "all") {
+            return ds.cloneWithRows(this.props.onGoingIncidents);
+        }
     }
 
     render() {
@@ -70,7 +51,7 @@ class IncidentList extends Component {
                 </View>
                 <ListView
                     dataSource={this.visibleIncidents()}
-                    renderRow={(incident) => <IncidentDescription incident={incident} onImageUpload={this.onImageUpload.bind(this)} ></IncidentDescription>}
+                    renderRow={(incident) => <IncidentDescription incident={incident} ></IncidentDescription>}
                 />
             </View>
         );
@@ -117,8 +98,3 @@ const styles = StyleSheet.create({
 });
 
 module.exports = IncidentList;
-
-
-[1, 2, 3].filter(function (item) {
-    return item == 1;
-})
