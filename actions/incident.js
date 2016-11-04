@@ -2,7 +2,7 @@ import {
     ACCEPT_INCIDENT_REQUEST, ACCEPT_INCIDENT_SUCCESS, ACCEPT_INCIDENT_FAILURE,
     RESOLVE_INCIDENT_REQUEST, RESOLVE_INCIDENT_SUCCESS, RESOLVE_INCIDENT_FAILURE,
     UPLOAD_IMAGE
-} from '../actions/actionTypes'
+} from '../actions/ActionTypes'
 
 function acceptIncidentRequest() {
     return {

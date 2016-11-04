@@ -1,6 +1,6 @@
 import {
     RECEIVE_ONGOING_INCIDENTS, RECEIVE_MINE_INCIDENTS, ACCEPT_INCIDENT_SUCCESS, RESOLVE_INCIDENT_SUCCESS, UPLOAD_IMAGE
-} from '../actions/actionTypes'
+} from '../actions/ActionTypes'
 
 const incidents = (state = {}, action) => {
     switch (action.type) {

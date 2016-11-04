@@ -8,7 +8,7 @@ import IncidentListContainer from './containers/IncidentListContainer';
 import IncidentDetailsContainer from './containers/IncidentDetailsContainer';
 
 const RouterWithRedux = connect()(Router);
-import reducers from './reducers';
+import reducers from './reducers/Index';
 const middleware = [thunkMiddleware];
 const store = compose(
     applyMiddleware(...middleware)

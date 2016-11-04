@@ -1,6 +1,6 @@
 import {
     REQUEST_ONGOING_INCIDENTS, RECEIVE_ONGOING_INCIDENTS, REQUEST_ONGOING_INCIDENTS_FAIL
-} from '../actions/actionTypes'
+} from '../actions/ActionTypes'
 
 const onGoingIncidents = (state = {isFetching: false, items: [], error: null}, action) => {
     switch (action.type) {

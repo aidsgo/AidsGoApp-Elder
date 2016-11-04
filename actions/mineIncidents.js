@@ -1,6 +1,6 @@
 import {
     REQUEST_MINE_INCIDENTS, RECEIVE_MINE_INCIDENTS, REQUEST_MINE_INCIDENTS_FAIL
-} from '../actions/actionTypes'
+} from '../actions/ActionTypes'
 
 function requestMineIncidents() {
     return {
@@ -25,7 +25,7 @@ function requestMineIncidentsFail(error) {
 export function fetchMineIncidents(userId) {
     return function (dispatch) {
         dispatch(requestMineIncidents());
-        return fetch('url')
+        return fetch('http://10.201.132.43:3000/emergency?name=name%201&volunteer_location={%22lat%22:34.256403,%22lng%22:108.953661}')
             .then(response => response.json())
             .then(json => dispatch(receiveMineIncidents(json)))
             .catch(error => dispatch(requestMineIncidentsFail(error)))

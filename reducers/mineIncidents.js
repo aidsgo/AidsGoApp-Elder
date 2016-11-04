@@ -1,6 +1,6 @@
 import {
     REQUEST_MINE_INCIDENTS, RECEIVE_MINE_INCIDENTS, REQUEST_MINE_INCIDENTS_FAIL
-} from '../actions/actionTypes'
+} from '../actions/ActionTypes'
 
 const mineIncidents = (state = {isFetching: false, items: [], error: null}, action) => {
     switch (action.type) {
