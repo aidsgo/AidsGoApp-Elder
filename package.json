@@ -6,13 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "avoscloud-sdk": "^0.6.10",
-    "leancloud-installation": "^1.0.0",
-    "leancloud-storage": "^1.3.3",
     "react": "15.2.1",
     "react-native": "0.31.0",
     "react-native-communications": "1.0.1",
     "react-native-image-picker": "^0.21.5",
+    "react-native-jpush": "^1.0.9",
     "react-native-maps": "^0.7.1",
     "react-native-router-flux": "^3.35.0",
     "react-native-vector-icons": "^2.1.0",
