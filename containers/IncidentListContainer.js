@@ -19,7 +19,8 @@ const mapStateToProps = (state, ownProps) => {
 
     return {
         onGoingIncidents: onGoingIncidents,
-        mineIncidents: mineIncidents
+        mineIncidents: mineIncidents,
+        user: state.user
     };
 };
 
@@ -28,8 +29,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         fetchOngoingIncidents: () => {
             dispatch(fetchOnGoingIncidents())
         },
-        fetchMineIncidents: () => {
-            dispatch(fetchMineIncidents())
+        fetchMineIncidents: (userId) => {
+            dispatch(fetchMineIncidents(userId))
         }
     }
 };

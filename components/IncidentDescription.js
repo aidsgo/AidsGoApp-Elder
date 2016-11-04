@@ -10,8 +10,8 @@ import {Actions} from 'react-native-router-flux';
 class IncidentDescription extends Component {
 
     getIncidentColor(incident){
-        var is_taken = incident.taken;
-        var is_resolved = incident.resolved;
+        var is_taken = incident.taken.length !== 0;
+        var is_resolved = incident.resolved.length !== 0;
         if (is_resolved){
             return {borderLeftColor: '#00beb3'}
         }else if(is_taken){

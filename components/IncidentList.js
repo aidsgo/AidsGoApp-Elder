@@ -21,7 +21,7 @@ class IncidentList extends Component {
 
     componentDidMount() {
         this.props.fetchOngoingIncidents();
-        this.props.fetchMineIncidents();
+        this.props.fetchMineIncidents(this.props.user.id);
     }
 
     visibleIncidents() {

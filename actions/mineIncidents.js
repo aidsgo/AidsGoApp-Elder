@@ -22,7 +22,7 @@ function requestMineIncidentsFail(error) {
     };
 }
 
-export function fetchMineIncidents() {
+export function fetchMineIncidents(userId) {
     return function (dispatch) {
         dispatch(requestMineIncidents());
         return fetch('url')
