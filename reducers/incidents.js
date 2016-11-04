@@ -9,9 +9,9 @@ const incidents = (state = {}, action) => {
         case RECEIVE_MINE_INCIDENTS:
             return Object.assign({}, state, action.incidents);
         case ACCEPT_INCIDENT_SUCCESS:
-            return Object.assign({}, state, action.incident);
+            return Object.assign({}, state, {[action.incident.id]: action.incident});
         case RESOLVE_INCIDENT_SUCCESS:
-            return Object.assign({}, state, action.incident);
+            return Object.assign({}, state, {[action.incident.id]: action.incident});
         case UPLOAD_IMAGE:
             return state.map(incident => {
                 if (incident.id !== action.id) {

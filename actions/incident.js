@@ -44,17 +44,23 @@ function resolveIncidentFailure(error) {
     };
 }
 
-export const acceptIncident = (incident_id, user_id) => {
+export const acceptIncident = (incidentId, userId) => {
     return function (dispatch) {
         dispatch(acceptIncidentRequest());
-        return fetch('url')
-            .then(response => response.json())
+        return fetch(`http://localhost:3000/emergencies/${incidentId}/add/${userId}`, {method: 'PUT'})
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw response.status;
+                }
+            })
             .then(json => dispatch(acceptIncidentSuccess(json)))
             .catch(error => dispatch(acceptIncidentFailure(error)))
     }
 };
 
-export const resolveIncident = (incident_id, user_id) => {
+export const resolveIncident = (incidentId, userId) => {
     return function (dispatch) {
         dispatch(resolveIncidentRequest());
         return fetch('url')

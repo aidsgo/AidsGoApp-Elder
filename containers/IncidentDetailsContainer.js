@@ -4,23 +4,21 @@ import IncidentDetails from '../components/IncidentDetails'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        incident: state.incidents.find(incident => {
-            return incident.id === ownProps.incident.id;
-        }),
+        incident: state.incidents[ownProps.incident.id],
         user: state.user
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onIncidentAccept: () => {
-            dispatch(acceptIncident(ownProps.incident.id, ownProps.user.id))
+        onIncidentAccept: (incidentId, userId) => {
+            dispatch(acceptIncident(incidentId, userId))
         },
-        onIncidentResolve: () => {
-            dispatch(resolveIncident(ownProps.incident.id, ownProps.user.id))
+        onIncidentResolve: (incidentId, userId) => {
+            dispatch(resolveIncident(incidentId, userId))
         },
-        onImageUpload: (image) => {
-            dispatch(uploadImage(ownProps.incident.id, image))
+        onImageUpload: (incidentId, image) => {
+            dispatch(uploadImage(incidentId, image))
         }
     }
 };

@@ -25,8 +25,14 @@ function requestMineIncidentsFail(error) {
 export function fetchMineIncidents(userId) {
     return function (dispatch) {
         dispatch(requestMineIncidents());
-        return fetch('http://10.201.132.43:3000/emergency?name=name%201&volunteer_location={%22lat%22:34.256403,%22lng%22:108.953661}')
-            .then(response => response.json())
+        return fetch('http://localhost:3000/emergencies?name=name&volunteer_location={lat:34.256403,lng:108.953661}')
+            .then(response => {
+                if(response.status === 200) {
+                    return response.json();
+                }else {
+                    throw response.status;
+                }
+            })
             .then(json => dispatch(receiveMineIncidents(json)))
             .catch(error => dispatch(requestMineIncidentsFail(error)))
     }

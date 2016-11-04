@@ -21,16 +21,24 @@ class IncidentDetails extends Component {
         super(props);
     }
 
+    isTakenByMe(incident, userId) {
+        return !!incident.taken.find(volunteerId => volunteerId === userId)
+    }
+
+    isResolved(incident) {
+        !!incident.resolved;
+    }
+
     renderButtons() {
-        if (this.props.incident.taken && !this.props.incident.resolved) {
+        if (this.isTakenByMe(this.props.incident, this.props.user.id) && !this.isResolved(this.props.incident)) {
             return (<View style={{alignItems: 'center'}}><TouchableOpacity style={styles.resolveBtn}
-                                                                           onPress={() => {this.props.onIncidentResolve(); Actions.pop()}}>
+                                                                           onPress={() => {this.props.onIncidentResolve(this.props.incident.id, this.props.user.id); Actions.pop()}}>
                 <Text style={styles.btnText}>Resolve</Text>
             </TouchableOpacity></View>)
-        } else if (!this.props.incident.resolved) {
+        } else if (!this.isTakenByMe(this.props.incident, this.props.user.id) && !this.isResolved(this.props.incident)) {
             return (<View style={styles.row}>
                 <TouchableOpacity style={styles.btn}
-                                  onPress={() => {this.props.onIncidentAccept(); Actions.pop()}}>
+                                  onPress={() => {this.props.onIncidentAccept(this.props.incident.id, this.props.user.id); Actions.pop()}}>
                     <Text style={styles.btnText}>Volunteer</Text>
                 </TouchableOpacity>
             </View>)
@@ -54,7 +62,7 @@ class IncidentDetails extends Component {
                 } else {
                     source = {uri: response.uri, isStatic: true};
                 }
-                onImageUpload(source);
+                onImageUpload(this.props.incident.id, source);
             }
         });
     }
@@ -109,7 +117,7 @@ class IncidentDetails extends Component {
                     </View>
                     <View style={styles.row}>
                         <Text style={[styles.label]}>Time: </Text>
-                        <Text style={styles.subTitle}> {this.props.incident.time.toLocaleString()}</Text>
+                        <Text style={styles.subTitle}> {this.props.incident.time}</Text>
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.label}>Emergency Call: </Text>
@@ -131,13 +139,12 @@ class IncidentDetails extends Component {
                 <MapView style={styles.map} showsUserLocation={true} followsUserLocation={true}
                          initialRegion={{
                                             latitude: this.props.incident.location.lat,
-                                            longitude: this.props.incident.location.lon,
+                                            longitude: this.props.incident.location.lng,
                                             latitudeDelta: 0.05,
                                             longitudeDelta: 0.05}}>
                     <MapView.Marker
-                        coordinate={{latitude: this.props.incident.location.lat,longitude: this.props.incident.location.lon}}/>
+                        coordinate={{latitude: this.props.incident.location.lat, longitude: this.props.incident.location.lng}}/>
                 </MapView>
-                {this.showImage()}
                 {this.renderButtons()}
             </ScrollView>
 
