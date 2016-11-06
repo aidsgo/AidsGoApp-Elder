@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {acceptIncident, resolveIncident, uploadImage} from '../actions/incident'
+import {acceptIncident, resolveIncident, uploadImage} from '../actions/Incident'
 import IncidentDetails from '../components/IncidentDetails'
 
 const mapStateToProps = (state, ownProps) => {
