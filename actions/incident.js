@@ -31,10 +31,11 @@ function resolveIncidentRequest() {
     };
 }
 
-function resolveIncidentSuccess(incident) {
+function resolveIncidentSuccess(incidentId, userId) {
     return {
         type: RESOLVE_INCIDENT_SUCCESS,
-        incident: incident
+        incidentId: incidentId,
+        userId: userId
     };
 }
 
@@ -50,7 +51,7 @@ export const acceptIncident = (incidentId, userId) => {
         dispatch(acceptIncidentRequest());
         return fetch(`http://localhost:3000/emergencies/${incidentId}/add/${userId}`, {method: 'PUT'})
             .then(response => {
-                if (response.status === 200) {
+                if (response.ok) {
                     return dispatch(acceptIncidentSuccess(incidentId, userId))
                 } else {
                     throw response.status;
@@ -63,9 +64,14 @@ export const acceptIncident = (incidentId, userId) => {
 export const resolveIncident = (incidentId, userId) => {
     return function (dispatch) {
         dispatch(resolveIncidentRequest());
-        return fetch('url')
-            .then(response => response.json())
-            .then(json => dispatch(resolveIncidentSuccess(json)))
+        return fetch(`http://localhost:3000/emergencies/${incidentId}/resolve`, {method: 'PUT'})
+            .then(response => {
+                if (response.ok) {
+                    return dispatch(resolveIncidentSuccess(incidentId, userId))
+                } else {
+                    throw response.status;
+                }
+            })
             .catch(error => dispatch(resolveIncidentFailure(error)))
     }
 };

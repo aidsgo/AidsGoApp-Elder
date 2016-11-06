@@ -26,7 +26,7 @@ class IncidentDetails extends Component {
     }
 
     isResolved(incident) {
-        !!incident.resolved;
+        return incident.resolved;
     }
 
     renderButtons() {
