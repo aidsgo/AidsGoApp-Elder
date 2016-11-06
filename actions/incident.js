@@ -10,10 +10,11 @@ function acceptIncidentRequest() {
     };
 }
 
-function acceptIncidentSuccess(incident) {
+function acceptIncidentSuccess(incidentId, userId) {
     return {
         type: ACCEPT_INCIDENT_SUCCESS,
-        incident: incident
+        incidentId: incidentId,
+        userId: userId
     };
 }
 
@@ -50,12 +51,11 @@ export const acceptIncident = (incidentId, userId) => {
         return fetch(`http://localhost:3000/emergencies/${incidentId}/add/${userId}`, {method: 'PUT'})
             .then(response => {
                 if (response.status === 200) {
-                    return response.json();
+                    return dispatch(acceptIncidentSuccess(incidentId, userId))
                 } else {
                     throw response.status;
                 }
             })
-            .then(json => dispatch(acceptIncidentSuccess(json)))
             .catch(error => dispatch(acceptIncidentFailure(error)))
     }
 };

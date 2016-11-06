@@ -1,5 +1,5 @@
 import {
-    REQUEST_MINE_INCIDENTS, RECEIVE_MINE_INCIDENTS, REQUEST_MINE_INCIDENTS_FAIL
+    REQUEST_MINE_INCIDENTS, RECEIVE_MINE_INCIDENTS, REQUEST_MINE_INCIDENTS_FAIL, ACCEPT_INCIDENT_SUCCESS
 } from '../actions/ActionTypes'
 
 const mineIncidents = (state = {isFetching: false, items: [], error: null}, action) => {
@@ -19,6 +19,10 @@ const mineIncidents = (state = {isFetching: false, items: [], error: null}, acti
             return Object.assign({}, state, {
                 isFetching: false,
                 error: action.error
+            });
+        case ACCEPT_INCIDENT_SUCCESS:
+            return Object.assign({}, state, {
+                items: [...state.items, action.incidentId]
             });
         default:
             return state

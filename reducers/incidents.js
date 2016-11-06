@@ -9,7 +9,9 @@ const incidents = (state = {}, action) => {
         case RECEIVE_MINE_INCIDENTS:
             return Object.assign({}, state, action.incidents);
         case ACCEPT_INCIDENT_SUCCESS:
-            return Object.assign({}, state, {[action.incident.id]: action.incident});
+            const incident = state[action.incidentId];
+            const newIncident = Object.assign({}, incident, {taken: [...incident.taken, action.userId]});
+            return Object.assign({}, state, {[action.incidentId]: newIncident});
         case RESOLVE_INCIDENT_SUCCESS:
             return Object.assign({}, state, {[action.incident.id]: action.incident});
         case UPLOAD_IMAGE:
