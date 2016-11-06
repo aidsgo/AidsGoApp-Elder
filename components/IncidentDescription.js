@@ -11,9 +11,7 @@ class IncidentDescription extends Component {
 
     getIncidentColor(incident) {
         var is_taken = incident.taken.length !== 0;
-        var is_resolved = incident.resolved;
-        if (is_resolved) {
-            console.log("resolved");
+        if (incident.resolved) {
             return {borderLeftColor: '#00beb3'}
         } else if (is_taken) {
             return {borderLeftColor: '#ff9a2a'}

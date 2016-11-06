@@ -13,7 +13,7 @@ const onGoingIncidents = (state = {isFetching: false, items: [], error: null}, a
             return Object.assign({}, state, {
                 isFetching: false,
                 error: null,
-                items: Object.keys(action.incidents)
+                items: Object.keys(action.incidents).map(incidentId => Number(incidentId))
             });
         case REQUEST_ONGOING_INCIDENTS_FAIL:
             return Object.assign({}, state, {
@@ -22,7 +22,10 @@ const onGoingIncidents = (state = {isFetching: false, items: [], error: null}, a
             });
         case RESOLVE_INCIDENT_SUCCESS:
             const index = state.items.indexOf(action.incidentId);
-            const newItems = state.items.splice(index, 1);
+            const newItems = [...state.items];
+            if(index >= 0) {
+                newItems.splice(index, 1);
+            }
             return Object.assign({}, state, {items: newItems});
         default:
             return state
