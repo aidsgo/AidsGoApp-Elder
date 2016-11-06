@@ -9,29 +9,30 @@ import {Actions} from 'react-native-router-flux';
 
 class IncidentDescription extends Component {
 
-    getIncidentColor(incident){
+    getIncidentColor(incident) {
         var is_taken = incident.taken.length !== 0;
-        var is_resolved = incident.resolved.length !== 0;
-        if (is_resolved){
+        var is_resolved = incident.resolved;
+        if (is_resolved) {
+            console.log("resolved");
             return {borderLeftColor: '#00beb3'}
-        }else if(is_taken){
+        } else if (is_taken) {
             return {borderLeftColor: '#ff9a2a'}
-        }else{
-            return { borderLeftColor: '#c9232d'}
+        } else {
+            return {borderLeftColor: '#c9232d'}
         }
-
     };
 
-  render() {
-    return (
-        <TouchableOpacity style={[styles.container, this.getIncidentColor(this.props.incident)]}
-                          onPress={() => Actions.incidentDetailsContainer({incident: this.props.incident})}>
-          <Text style={styles.title}>{this.props.incident.name} need your help!</Text>
-          <Text style={[styles.subTitle, {marginTop: 5}]}>{this.props.incident.distance} meters away from you</Text>
-          <Text style={styles.subTitle}>{this.props.incident.time.toLocaleString()}</Text>
-        </TouchableOpacity>
-    );
-  }
+    render() {
+        return (
+            <TouchableOpacity style={[styles.container, this.getIncidentColor(this.props.incident)]}
+                              onPress={() => Actions.incidentDetailsContainer({incident: this.props.incident})}>
+                <Text style={styles.title}>{this.props.incident.name} need your help!</Text>
+                <Text style={[styles.subTitle, {marginTop: 5}]}>{this.props.incident.distance} meters away from
+                    you</Text>
+                <Text style={styles.subTitle}>{this.props.incident.time.toLocaleString()}</Text>
+            </TouchableOpacity>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
