@@ -5,7 +5,8 @@ import {
     Image,
     Text,
     TextInput,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
 } from 'react-native';
 
 var width = Dimensions.get('window').width;
@@ -28,9 +29,9 @@ class Login extends Component {
                             <View style={styles.upright}/>
                             <TextInput style={styles.input} placeholder='  密    码' placeholderTextColor='white'></TextInput>
                         </View>
-                        <View style={[styles.loginput, styles.size, styles.shadow, styles.button]} >
+                        <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]} >
                             <Text style={styles.loginText}>登     录</Text>
-                        </View>
+                        </TouchableOpacity>
                         <View style={styles.forget} >
                             <Text style={styles.tabText}>忘记密码?</Text>
                         </View>
