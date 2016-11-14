@@ -64,7 +64,7 @@ export const acceptIncident = (incidentId, userId) => {
 export const resolveIncident = (incidentId, userId) => {
     return function (dispatch) {
         dispatch(resolveIncidentRequest());
-        return fetch(`http://localhost:3000/emergencies/${incidentId}/resolve`, {method: 'PUT'})
+        return fetch(`http://localhost:3000/emergencies/${incidentId}/resolve/${userId}`, {method: 'PUT'})
             .then(response => {
                 if (response.ok) {
                     return dispatch(resolveIncidentSuccess(incidentId, userId))

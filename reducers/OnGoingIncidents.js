@@ -13,7 +13,7 @@ const onGoingIncidents = (state = {isFetching: false, items: [], error: null}, a
             return Object.assign({}, state, {
                 isFetching: false,
                 error: null,
-                items: Object.keys(action.incidents).map(incidentId => Number(incidentId))
+                items: Object.keys(action.incidents)
             });
         case REQUEST_ONGOING_INCIDENTS_FAIL:
             return Object.assign({}, state, {

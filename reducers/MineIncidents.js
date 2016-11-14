@@ -13,7 +13,7 @@ const mineIncidents = (state = {isFetching: false, items: [], error: null}, acti
             return Object.assign({}, state, {
                 isFetching: false,
                 error: null,
-                items: Object.keys(action.incidents).map(incidentId => Number(incidentId))
+                items: Object.keys(action.incidents)
             });
         case REQUEST_MINE_INCIDENTS_FAIL:
             return Object.assign({}, state, {
