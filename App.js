@@ -21,9 +21,9 @@ class App extends Component {
                 <RouterWithRedux>
                     <Scene key="root">
                         <Scene key="incidentListContainer" component={IncidentListContainer}
-                               navigationBarStyle={{backgroundColor: 'rgb(250,250,250)'}}
-                               titleStyle={{color: '#333', fontWeight: 'bold', fontSize: 16}}
-                               title="Open Incidents" initial={true}/>
+                               navigationBarStyle={{backgroundColor: '#EE8280', borderBottomWidth: 0}}
+                               titleStyle={{color: '#FFFFFF', fontWeight: 'bold', fontSize: 22}}
+                               title="Incidents nearby" initial={true}/>
 
                         <Scene key="incidentDetailsContainer" component={IncidentDetailsContainer}
                                navigationBarStyle={{backgroundColor: 'rgb(250,250,250)'}}

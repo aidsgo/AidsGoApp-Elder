@@ -12,7 +12,7 @@ import IncidentDescription from './IncidentDescription'
 class IncidentList extends Component {
     constructor(props) {
         super(props);
-        this.state = {currentTab: 'all'};
+        this.state = {currentTab: 'onGoing'};
     }
 
     onSwitchTab(tab) {
@@ -28,7 +28,7 @@ class IncidentList extends Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         if (this.state.currentTab == "mine") {
             return ds.cloneWithRows(this.props.mineIncidents);
-        } else if (this.state.currentTab == "all") {
+        } else if (this.state.currentTab == "onGoing") {
             return ds.cloneWithRows(this.props.onGoingIncidents);
         }
     }
@@ -38,9 +38,9 @@ class IncidentList extends Component {
             <View style={styles.container}>
                 <View style={styles.tabRow}>
                     <TouchableOpacity
-                        style={[styles.tab, styles.firstTab, this.state.currentTab=='all'? styles.currentTab: {}]}
-                        onPress={() => {this.onSwitchTab('all')}}>
-                        <Text style={styles.tabText}>All</Text>
+                        style={[styles.tab, styles.firstTab, this.state.currentTab=='onGoing'? styles.currentTab: {}]}
+                        onPress={() => {this.onSwitchTab('onGoing')}}>
+                        <Text style={styles.tabText}>On going</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -49,7 +49,7 @@ class IncidentList extends Component {
                         <Text style={styles.tabText}>Mine</Text>
                     </TouchableOpacity>
                 </View>
-                <ListView
+                <ListView style={styles.list}
                     dataSource={this.visibleIncidents()}
                     renderRow={(incident) => <IncidentDescription incident={incident} ></IncidentDescription>}
                 />
@@ -64,36 +64,43 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'rgb(250,250,250)',
         marginTop: 64,
-
     },
     tabRow: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: 10
+        paddingBottom: 10,
+        backgroundColor: '#EE8280'
     },
     tab: {
         width: 100,
-        borderWidth: 1,
-        borderColor: '#e3e3e3',
+        height: 32,
+        borderWidth: 1.5,
+        borderColor: '#FFFFFF',
         padding: 2,
         justifyContent: 'center',
         alignItems: 'center'
     },
     firstTab: {
-        borderTopLeftRadius: 3,
-        borderBottomLeftRadius: 3
+        borderTopLeftRadius: 5,
+        borderBottomLeftRadius: 5
     },
     lastTab: {
-        borderTopRightRadius: 3,
-        borderBottomRightRadius: 3,
+        borderTopRightRadius: 5,
+        borderBottomRightRadius: 5,
         borderLeftWidth: 0
     },
     currentTab: {
-        backgroundColor: '#c8c9c7'
+        backgroundColor: '#F8CCCB'
     },
     tabText: {
         color: '#333f48',
-        fontSize: 12
+        fontSize: 14
+    },
+    list: {
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 8,
+        backgroundColor: "#F0F0F1"
     }
 });
 
