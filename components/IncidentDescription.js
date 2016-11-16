@@ -38,7 +38,7 @@ class IncidentDescription extends Component {
                 </View>
                 <View style={styles.logo}>
                     <Image style={{width: 50, height: 50, resizeMode: 'contain'}}
-                           source={require('../images/logo.png')}></Image>
+                           source={require('../public/img/logo.png')}></Image>
                 </View>
             </TouchableOpacity>
         );

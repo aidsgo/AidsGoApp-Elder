@@ -6,6 +6,8 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IncidentListContainer from './containers/IncidentListContainer';
 import IncidentDetailsContainer from './containers/IncidentDetailsContainer';
+import Logo from './components/Logo';
+import Login from './components/Login';
 
 const RouterWithRedux = connect()(Router);
 import reducers from './reducers/Index';
@@ -20,10 +22,14 @@ class App extends Component {
             <Provider store={store}>
                 <RouterWithRedux>
                     <Scene key="root">
+                        <Scene key="logo" component={Logo} initial={true}/>
+
+                        <Scene key="aigsGoLogin" component={Login} />
+
                         <Scene key="incidentListContainer" component={IncidentListContainer}
                                navigationBarStyle={{backgroundColor: '#EE8280', borderBottomWidth: 0}}
                                titleStyle={{color: '#FFFFFF', fontWeight: 'bold', fontSize: 22}}
-                               title="Incidents nearby" initial={true}/>
+                               title="Incidents nearby"/>
 
                         <Scene key="incidentDetailsContainer" component={IncidentDetailsContainer}
                                navigationBarStyle={{backgroundColor: 'rgb(250,250,250)'}}
