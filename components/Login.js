@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Actions} from 'react-native-router-flux';
 import {
     StyleSheet,
     View,
@@ -13,26 +14,56 @@ var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            signedIn: false
+        };
+    }
+
+    componentDidUpdate() {
+        if (this.state.signedIn) {
+            Actions.incidentListContainer();
+        }
+    }
+
+    componentDidMount() {
+        if (this.state.signedIn) {
+            Actions.incidentListContainer();
+        }
+    }
+
+    login() {
+        this.setState({
+            signedIn: true
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('./../public/img/background_1.png')} style={styles.backgroundImage} >
-                    <View style={styles.mask} >
-                        <View style={[styles.circle, styles.shadow]}/>
+                <Image source={require('./../public/img/background_1.png')} style={styles.backgroundImage}>
+                    <View style={styles.mask}>
+                        <View style={[styles.circle, styles.shadow]}>
+                            <Image style={styles.avatar} source={require('./../public/img/avatar.png')}/>
+                        </View>
                         <View style={[styles.loginput, styles.size, styles.shadow, styles.username]}>
-                            <Image source={require('./../public/img/avatar.png')} style={styles.icon} />
+                            <Image source={require('./../public/img/user.png')} style={styles.icon}/>
                             <View style={styles.upright}/>
-                            <TextInput style={styles.input} placeholder='  电    话' placeholderTextColor='white'></TextInput>
+                            <TextInput style={styles.input} placeholder='  电    话'
+                                       placeholderTextColor='white'></TextInput>
                         </View>
                         <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                            <Image source={require('./../public/img/lock.png')} style={styles.icon} />
+                            <Image source={require('./../public/img/lock.png')} style={styles.icon}/>
                             <View style={styles.upright}/>
-                            <TextInput style={styles.input} placeholder='  密    码' placeholderTextColor='white'></TextInput>
+                            <TextInput style={styles.input} placeholder='  密    码'
+                                       placeholderTextColor='white'></TextInput>
                         </View>
-                        <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]} >
-                            <Text style={styles.loginText}>登     录</Text>
+                        <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]}
+                                          onPress={() => this.login()}>
+                            <Text style={styles.loginText}>登       录</Text>
                         </TouchableOpacity>
-                        <View style={styles.forget} >
+                        <View style={styles.forget}>
                             <Text style={styles.tabText}>忘记密码?</Text>
                         </View>
                     </View>
@@ -44,8 +75,7 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-    },
+    container: {},
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover'
@@ -65,25 +95,32 @@ const styles = StyleSheet.create({
     },
     circle: {
         alignSelf: 'center',
-        marginTop: height/5,
+        marginTop: height / 5,
         width: 130,
         height: 130,
-        borderRadius: 130/2,
-        backgroundColor: 'white'
+        borderRadius: 130 / 2,
+        backgroundColor: 'white',
+
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    avatar: {
+        width: 100,
+        height: 100
     },
     size: {
-        width: width/1.5,
+        width: width / 1.5,
         height: 40
     },
     loginput: {
         alignSelf: 'center',
-        width: width/1.5,
+        width: width / 1.5,
         height: 40,
         borderRadius: 14,
         backgroundColor: 'rgba(255,255,255,0.5)'
     },
     username: {
-        marginTop: height/6
+        marginTop: height / 6
     },
     password: {
         marginTop: 10
@@ -92,7 +129,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 8,
         left: 10,
-        resizeMode :'stretch',
+        resizeMode: 'stretch',
         width: 24,
         height: 24
     },
@@ -108,7 +145,7 @@ const styles = StyleSheet.create({
     input: {
         position: 'absolute',
         right: 12,
-        width: width/2,
+        width: width / 2,
         height: 30,
         marginTop: 5,
         backgroundColor: 'rgba(255,255,255,0.4)'
@@ -118,7 +155,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#DF647A'
     },
     forget: {
-        width: width/3,
+        width: width / 3,
         height: 40,
         alignSelf: 'center',
         borderBottomColor: 'white',
@@ -127,7 +164,7 @@ const styles = StyleSheet.create({
     },
     loginText: {
         alignSelf: 'center',
-        width: width/3,
+        width: width / 3,
         height: 40,
         textAlign: 'center',
         color: 'white',
