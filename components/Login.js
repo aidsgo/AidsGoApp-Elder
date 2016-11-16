@@ -78,7 +78,9 @@ const styles = StyleSheet.create({
     container: {},
     backgroundImage: {
         flex: 1,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        width:width,
+        height:height
     },
     mask: {
         width: width,
