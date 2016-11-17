@@ -23,13 +23,13 @@ class Login extends Component {
 
     componentDidUpdate() {
         if (this.state.signedIn) {
-            Actions.incidentListContainer();
+            Actions.button();
         }
     }
 
     componentDidMount() {
         if (this.state.signedIn) {
-            Actions.incidentListContainer();
+            Actions.button();
         }
     }
 

@@ -16,20 +16,20 @@ class Button extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('./../public/img/background_2.png')} style={styles.backgroundImage} >
-                    <View style={styles.mask} >
+                <Image source={require('./../public/img/background_2.png')} style={styles.backgroundImage}>
+                    <View style={styles.mask}>
                         <View style={styles.header}>
-                            <Image source={require('./../public/img/avatar.png')} style={styles.icon} />
+                            <Image source={require('./../public/img/user.png')} style={styles.icon}/>
                         </View>
-                        <TouchableOpacity style={styles.button}>
+                        <View style={styles.button}>
                             <View style={[styles.circle, styles.circle1, styles.shadow]}>
                                 <View style={[styles.circle, styles.circle2, styles.shadow]}>
-                                    <View style={[styles.circle, styles.circle3, styles.shadow]}>
+                                    <TouchableOpacity style={[styles.circle, styles.circle3, styles.shadow]}>
                                         <View style={[styles.circle, styles.circle4, styles.shadow]}></View>
-                                    </View>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
-                        </TouchableOpacity>
+                        </View>
                         <Text style={styles.tabText}>SOS</Text>
                     </View>
                 </Image>
@@ -40,35 +40,36 @@ class Button extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-    },
+    container: {},
     backgroundImage: {
         flex: 1,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        width: width,
+        height: height
     },
     mask: {
         width: width,
         height: height,
         backgroundColor: 'rgba(44,12,62,0.95)',
 
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center'
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     header: {
         position: 'absolute',
         top: 0,
         left: 0,
         width: width,
-        height: 120,
+        height: 70,
         borderBottomColor: 'rgba(255,255,255,0.1)',
         borderBottomWidth: 2
     },
     icon: {
         position: 'absolute',
-        top: 80,
+        top: 30,
         right: 30,
-        resizeMode :'stretch',
+        resizeMode: 'stretch',
         width: 24,
         height: 24
     },
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 0,
-        top: -100,
+        top: -120,
         left: -100
     },
     circle: {
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     circle1: {
         width: 220,
         height: 220,
-        borderRadius: 220/2,
+        borderRadius: 220 / 2,
         backgroundColor: '#3C0824'
     },
     circle2: {
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
         left: 5,
         width: 210,
         height: 210,
-        borderRadius: 210/2,
+        borderRadius: 210 / 2,
         backgroundColor: '#6C0C32'
     },
     circle3: {
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
         left: 20,
         width: 170,
         height: 170,
-        borderRadius: 170/2,
+        borderRadius: 170 / 2,
         backgroundColor: '#A81538'
     },
     circle4: {
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         left: 5,
         width: 160,
         height: 160,
-        borderRadius: 160/2,
+        borderRadius: 160 / 2,
         backgroundColor: 'rgba(232,0,85,0.9)'
     },
     tabText: {
