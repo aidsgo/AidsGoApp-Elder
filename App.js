@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk'
 import {createStore, applyMiddleware, compose} from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Logo from './components/Logo';
-import Login from './components/Login';
+import UserContainer from './containers/UserContainer';
 import Button from './components/Button';
 
 const RouterWithRedux = connect()(Router);
@@ -22,7 +22,7 @@ class App extends Component {
                 <RouterWithRedux >
                     <Scene key="root" hideNavBar>
                         <Scene key="logo" component={Logo} initial={true}/>
-                        <Scene key="aigsGoLogin" component={Login} />
+                        <Scene key="aigsGoLogin" component={UserContainer} />
                         <Scene key="button" component={Button} />
                     </Scene>
                 </RouterWithRedux>

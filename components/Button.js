@@ -8,11 +8,13 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native';
+import {sos} from "./sos";
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
 class Button extends Component {
+
     render() {
         return (
             <View style={styles.container}>
@@ -24,7 +26,8 @@ class Button extends Component {
                         <View style={styles.button}>
                             <View style={[styles.circle, styles.circle1, styles.shadow]}>
                                 <View style={[styles.circle, styles.circle2, styles.shadow]}>
-                                    <TouchableOpacity style={[styles.circle, styles.circle3, styles.shadow]}>
+                                    <TouchableOpacity style={[styles.circle, styles.circle3, styles.shadow]}
+                                                      onPress={() => {sos()}}>
                                         <View style={[styles.circle, styles.circle4, styles.shadow]}></View>
                                     </TouchableOpacity>
                                 </View>
