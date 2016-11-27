@@ -8,12 +8,41 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native';
-import {sos} from "./sos";
+
+import Modal from './Modal';
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
 
 class Button extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            errorModal: false
+        };
+    }
+
+    handleSOS() {
+        const {user, sosInfo, sos} = this.props;
+        if(!sosInfo.notify){
+                sos(user.profile.id, user.profile.serial_number, user.profile.token)
+        } else {
+            this.setState({
+                errorModal: !this.state.errorModal
+            });
+        }
+    }
+
+    toggleErrorModal() {
+        this.setState({
+            errorModal: !this.state.errorModal
+        });
+    }
+
+    errorModal() {
+        const config = {content: '求救成功, \n小雷锋正在火速赶来!', toggleErrorModal: () => this.toggleErrorModal()};
+        return <Modal config={config}/>
+    }
 
     render() {
         return (
@@ -27,7 +56,7 @@ class Button extends Component {
                             <View style={[styles.circle, styles.circle1, styles.shadow]}>
                                 <View style={[styles.circle, styles.circle2, styles.shadow]}>
                                     <TouchableOpacity style={[styles.circle, styles.circle3, styles.shadow]}
-                                                      onPress={() => {sos()}}>
+                                                      onPress={() => this.handleSOS()}>
                                         <View style={[styles.circle, styles.circle4, styles.shadow]}></View>
                                     </TouchableOpacity>
                                 </View>
@@ -35,6 +64,7 @@ class Button extends Component {
                         </View>
                         <Text style={styles.tabText}>SOS</Text>
                     </View>
+                    {this.state.errorModal ? this.errorModal() : null}
                 </Image>
             </View>
         );

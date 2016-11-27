@@ -1,2 +1,5 @@
 export const ENTER_SUCCESS = 'ENTER_SUCCESS';
 export const ENTER_FAILURE = 'ENTER_FAILURE';
+
+export const NOTIFY_SUCCESS = 'NOTIFY_SUCCESS';
+export const NOTIFY_FAILURE = 'NOTIFY_FAILURE';

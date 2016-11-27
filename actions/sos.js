@@ -1,24 +1,22 @@
-import {ENTER_SUCCESS, ENTER_FAILURE} from '../actions/ActionTypes';
+import {NOTIFY_SUCCESS, NOTIFY_FAILURE} from './ActionTypes';
 
-function enterSuccess(userInfo) {
+function notifySuccess() {
     return {
-        type: ENTER_SUCCESS,
-        userInfo: userInfo
+        type: NOTIFY_SUCCESS
     };
 }
 
-function enterFailure() {
+function notifyFailure() {
     return {
-        type: ENTER_FAILURE
+        type: NOTIFY_FAILURE
     };
 }
 
-export const userEnter = (action, phoneNumber, password, serialNumber) => {
-    const fetchURL = (action === 'logIn') ? 'http://localhost:3000/elder/login' : 'http://localhost:3000/elder/sign_up';
+export const sos = (userId, serialNumber, userToken) => {
+    const fetchURL = 'http://localhost:3000/emergency';
     const body = JSON.stringify(
         {
-            "phone_number": phoneNumber,
-            "password": password,
+            "elder_id": userId,
             "serial_number": serialNumber
         }
     );
@@ -26,7 +24,8 @@ export const userEnter = (action, phoneNumber, password, serialNumber) => {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': userToken
         },
         credentials: 'same-origin',
         body
@@ -35,8 +34,8 @@ export const userEnter = (action, phoneNumber, password, serialNumber) => {
     return function (dispatch) {
         return fetch(fetchURL, config)
             .then(checkStatus).then(parseJson, redirect)
-            .then(json => dispatch(enterSuccess(json)))
-            .catch(error => dispatch(enterFailure(error)));
+            .then(json => dispatch(notifySuccess(json)))
+            .catch(error => dispatch(notifyFailure(error)));
     }
 };
 

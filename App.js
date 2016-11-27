@@ -6,7 +6,7 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Logo from './components/Logo';
 import UserContainer from './containers/UserContainer';
-import Button from './components/Button';
+import ButtonContainer from './containers/ButtonContainer';
 
 const RouterWithRedux = connect()(Router);
 import reducers from './reducers/Index';
@@ -23,7 +23,7 @@ class App extends Component {
                     <Scene key="root" hideNavBar>
                         <Scene key="logo" component={Logo} initial={true}/>
                         <Scene key="aigsGoLogin" component={UserContainer} />
-                        <Scene key="button" component={Button} />
+                        <Scene key="button" component={ButtonContainer} />
                     </Scene>
                 </RouterWithRedux>
             </Provider>

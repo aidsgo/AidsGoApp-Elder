@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
     text: {
         alignSelf: 'center',
         width: width / 2,
-        height: 40,
         textAlign: 'center',
         color: 'black',
         lineHeight: 32,
