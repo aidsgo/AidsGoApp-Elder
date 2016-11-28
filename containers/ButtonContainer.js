@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        sos: (userId, serialNumber, userToken) => {
-            dispatch(sos(userId, serialNumber, userToken))
+        sos: (userId, serialNumber, userToken, location) => {
+            dispatch(sos(userId, serialNumber, userToken, location))
         }
     }
 };

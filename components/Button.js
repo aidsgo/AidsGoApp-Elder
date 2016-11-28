@@ -25,7 +25,7 @@ class Button extends Component {
     handleSOS() {
         const {user, sosInfo, sos} = this.props;
         if(!sosInfo.notify){
-                sos(user.profile.id, user.profile.serial_number, user.profile.token)
+                sos(user.profile.id, user.profile.serial_number, user.profile.token, user.location)
         } else {
             this.setState({
                 errorModal: !this.state.errorModal
@@ -43,6 +43,7 @@ class Button extends Component {
         const config = {content: '求救成功, \n小雷锋正在火速赶来!', toggleErrorModal: () => this.toggleErrorModal()};
         return <Modal config={config}/>
     }
+
 
     render() {
         return (

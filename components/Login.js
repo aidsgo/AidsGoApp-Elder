@@ -12,7 +12,8 @@ import {
 
 import md5 from "react-native-md5";
 
-import Modal from './Modal'
+import Modal from './Modal';
+
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get('window').height;
@@ -25,16 +26,32 @@ class Login extends Component {
             errorModal: false,
             phoneNumber: '',
             password: '',
-            serialNumber: ''
+            serialNumber: '',
+            address: ''
         };
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.user.signedIn) {
+            this.setCurrentLocation();
             Actions.button();
         } else if (!nextProps.user.signedIn) {
             this.toggleErrorModal();
         }
+    }
+
+    setCurrentLocation() {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const location = {
+                    lat: JSON.stringify(position.coords.latitude),
+                    lng: JSON.stringify(position.coords.longitude)
+                };
+                this.props.updateLocation(location)
+            },
+            (error) => alert(error.message),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
     }
 
     toggleAction() {
@@ -55,26 +72,27 @@ class Login extends Component {
     }
 
     login() {
-        const {action, phoneNumber, password, serialNumber} = this.state;
-        this.props.userEnter(action, phoneNumber, md5.str_md5(password), serialNumber);
+        const {action, phoneNumber, password, serialNumber, address} = this.state;
+        this.props.userEnter(action, phoneNumber, md5.str_md5(password), serialNumber, address);
     }
 
-    handlePhone(value) {
-        this.setState({
-            phoneNumber: value
-        });
-    }
-
-    handlePassword(value) {
-        this.setState({
-            password: value
-        });
-    }
-
-    handleSerialNumber(value) {
-        this.setState({
-            serialNumber: value
-        });
+    handleInput(value, type) {
+        switch(type){
+            case 'phone':
+                this.setState({ phoneNumber: value });
+                break;
+            case 'password':
+                this.setState({ password: value });
+                break;
+            case 'serialNumber':
+                this.setState({ serialNumber: value });
+                break;
+            case 'address':
+                this.setState({ address: value });
+                break;
+            default:
+                break;
+        }
     }
 
     render() {
@@ -98,7 +116,7 @@ class Login extends Component {
                                 <Image source={require('./../public/img/user.png')} style={styles.icon}/>
                                 <View style={styles.upright}/>
                                 <TextInput style={styles.input} placeholder='  电    话' placeholderTextColor='white'
-                                           onChangeText={(value) => {this.handlePhone(value)}}>
+                                           onChangeText={(value) => {this.handleInput(value, 'phone')}}>
 
                                 </TextInput>
                             </View>
@@ -106,18 +124,30 @@ class Login extends Component {
                                 <Image source={require('./../public/img/lock.png')} style={styles.icon}/>
                                 <View style={styles.upright}/>
                                 <TextInput style={styles.input} placeholder='  密    码' placeholderTextColor='white'
-                                           onChangeText={(value) => {this.handlePassword(value)}}>
+                                           onChangeText={(value) => {this.handleInput(value, 'password')}}>
 
                                 </TextInput>
                             </View>
-                            <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                <Image source={require('./../public/img/lock.png')} style={styles.icon}/>
-                                <View style={styles.upright}/>
-                                <TextInput style={styles.input} placeholder='  IoT 序 列 号' placeholderTextColor='white'
-                                           onChangeText={(value) => {this.handleSerialNumber(value)}}>
+                            {this.state.action === 'signUp' ?
+                              <View style={{marginTop: 6}}>
+                                <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
+                                    <Image source={require('./../public/img/serialNumber.png')} style={styles.icon}/>
+                                    <View style={styles.upright}/>
+                                    <TextInput style={styles.input} placeholder='  IoT 序 列 号' placeholderTextColor='white'
+                                               onChangeText={(value) => {this.handleInput(value, 'serialNumber')}}>
 
-                                </TextInput>
-                            </View>
+                                    </TextInput>
+                                </View>
+                                <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
+                                    <Image source={require('./../public/img/address.png')} style={styles.icon}/>
+                                    <View style={styles.upright}/>
+                                    <TextInput style={styles.input} placeholder='  家 庭 地 址' placeholderTextColor='white'
+                                               onChangeText={(value) => {this.handleInput(value, 'address')}}>
+
+                                    </TextInput>
+                                </View>
+                              </View> : null
+                            }
 
                             <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]}
                                               onPress={() => this.login()}>
