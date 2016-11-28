@@ -14,7 +14,7 @@ function enterFailure() {
 }
 
 export const userEnter = (action, phoneNumber, password, serialNumber) => {
-    const fetchURL = (action === 'logIn') ? 'http://localhost:3000/elder/login' : 'http://localhost:3000/elder/sign_up';
+    const fetchURL = (action === 'logIn') ? 'http://localhost:3000/elders/login' : 'http://localhost:3000/elders/sign_up';
     const body = JSON.stringify(
         {
             "phone_number": phoneNumber,
