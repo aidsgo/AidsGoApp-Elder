@@ -13,7 +13,7 @@ function notifyFailure() {
 }
 
 export const sos = (userId, serialNumber, userToken, location) => {
-    const fetchURL = 'http://localhost:3000/emergency';
+    const fetchURL = 'http://localhost:3000/emergency/notify';
     const body = JSON.stringify(
         {
             "elder_id": userId,
