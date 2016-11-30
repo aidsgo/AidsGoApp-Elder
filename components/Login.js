@@ -7,7 +7,8 @@ import {
     Text,
     TextInput,
     Dimensions,
-    TouchableOpacity
+    TouchableOpacity,
+    KeyboardAvoidingView
 } from 'react-native';
 
 import md5 from "react-native-md5";
@@ -100,64 +101,66 @@ class Login extends Component {
             <View style={styles.container}>
                 <Image source={require('./../public/img/background_1.png')} style={styles.backgroundImage}>
                     <View style={styles.mask}>
-                        <View style={[styles.circle, styles.shadow]}>
-                            <Image style={styles.avatar} source={require('./../public/img/avatar.png')}/>
-                        </View>
-                        <View style={styles.actionToggle}>
-                            <TouchableOpacity style={[styles.leftMask, this.state.action === 'signUp' ? styles.selected : {}]} onPress={() => this.toggleAction()}>
-                                <Text style={styles.actionText}>注   册</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={[styles.rightMask, this.state.action === 'logIn' ? styles.selected : {}]} onPress={() => this.toggleAction()}>
-                                <Text style={styles.actionText}>登   录</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.halfMask}>
-                            <View style={[styles.loginput, styles.size, styles.shadow, styles.username]}>
-                                <Image source={require('./../public/img/user.png')} style={styles.icon}/>
-                                <View style={styles.upright}/>
-                                <TextInput style={styles.input} placeholder='  电    话' placeholderTextColor='white'
-                                           onChangeText={(value) => {this.handleInput(value, 'phone')}}>
-
-                                </TextInput>
+                        <KeyboardAvoidingView behavior={'position'}>
+                            <View style={[styles.circle, styles.shadow]}>
+                                <Image style={styles.avatar} source={require('./../public/img/avatar.png')}/>
                             </View>
-                            <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                <Image source={require('./../public/img/lock.png')} style={styles.icon}/>
-                                <View style={styles.upright}/>
-                                <TextInput style={styles.input} placeholder='  密    码' placeholderTextColor='white'
-                                           onChangeText={(value) => {this.handleInput(value, 'password')}}>
-
-                                </TextInput>
+                            <View style={styles.actionToggle}>
+                                <TouchableOpacity style={[styles.leftMask, this.state.action === 'signUp' ? styles.selected : {}]} onPress={() => this.toggleAction()}>
+                                    <Text style={styles.actionText}>注   册</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={[styles.rightMask, this.state.action === 'logIn' ? styles.selected : {}]} onPress={() => this.toggleAction()}>
+                                    <Text style={styles.actionText}>登   录</Text>
+                                </TouchableOpacity>
                             </View>
-                            {this.state.action === 'signUp' ?
-                              <View style={{marginTop: 6}}>
-                                <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                    <Image source={require('./../public/img/serialNumber.png')} style={styles.icon}/>
+                            <View style={styles.halfMask}>
+                                <View style={[styles.loginput, styles.size, styles.shadow, styles.username]}>
+                                    <Image source={require('./../public/img/user.png')} style={styles.icon}/>
                                     <View style={styles.upright}/>
-                                    <TextInput style={styles.input} placeholder='  IoT 序 列 号' placeholderTextColor='white'
-                                               onChangeText={(value) => {this.handleInput(value, 'serialNumber')}}>
+                                    <TextInput style={styles.input} placeholder='  电    话' placeholderTextColor='white'
+                                               onChangeText={(value) => {this.handleInput(value, 'phone')}}>
 
                                     </TextInput>
                                 </View>
                                 <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                    <Image source={require('./../public/img/address.png')} style={styles.icon}/>
+                                    <Image source={require('./../public/img/lock.png')} style={styles.icon}/>
                                     <View style={styles.upright}/>
-                                    <TextInput style={styles.input} placeholder='  家 庭 地 址' placeholderTextColor='white'
-                                               onChangeText={(value) => {this.handleInput(value, 'address')}}>
+                                    <TextInput style={styles.input} placeholder='  密    码' placeholderTextColor='white'
+                                               onChangeText={(value) => {this.handleInput(value, 'password')}}>
 
                                     </TextInput>
                                 </View>
-                              </View> : null
-                            }
+                                {this.state.action === 'signUp' ?
+                                  <View style={{marginTop: 6}}>
+                                    <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
+                                        <Image source={require('./../public/img/serialNumber.png')} style={styles.icon}/>
+                                        <View style={styles.upright}/>
+                                        <TextInput style={styles.input} placeholder='  IoT 序 列 号' placeholderTextColor='white'
+                                                   onChangeText={(value) => {this.handleInput(value, 'serialNumber')}}>
 
-                            <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]}
-                                              onPress={() => this.login()}>
-                                <Text style={styles.loginText}>{this.state.action === 'logIn' ? '登      录' : '注      册'}</Text>
-                            </TouchableOpacity>
-                            {this.state.action === 'logIn' ? <View style={styles.forget}>
-                                <Text style={styles.tabText}>忘记密码?</Text>
-                            </View> : null}
-                        </View>
-                        {this.state.errorModal ? this.errorModal() : null}
+                                        </TextInput>
+                                    </View>
+                                    <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
+                                        <Image source={require('./../public/img/address.png')} style={styles.icon}/>
+                                        <View style={styles.upright}/>
+                                        <TextInput style={styles.input} placeholder='  家 庭 地 址' placeholderTextColor='white'
+                                                   onChangeText={(value) => {this.handleInput(value, 'address')}}>
+
+                                        </TextInput>
+                                    </View>
+                                  </View> : null
+                                }
+
+                                <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]}
+                                                  onPress={() => this.login()}>
+                                    <Text style={styles.loginText}>{this.state.action === 'logIn' ? '登      录' : '注      册'}</Text>
+                                </TouchableOpacity>
+                                {this.state.action === 'logIn' ? <View style={styles.forget}>
+                                    <Text style={styles.tabText}>忘记密码?</Text>
+                                </View> : null}
+                            </View>
+                            {this.state.errorModal ? this.errorModal() : null}
+                        </KeyboardAvoidingView>
                     </View>
                 </Image>
             </View>
