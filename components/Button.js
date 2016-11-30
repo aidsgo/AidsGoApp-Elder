@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Actions} from 'react-native-router-flux';
 import {
     StyleSheet,
     View,
@@ -51,7 +52,9 @@ class Button extends Component {
                 <Image source={require('./../public/img/background_2.png')} style={styles.backgroundImage}>
                     <View style={styles.mask}>
                         <View style={styles.header}>
-                            <Image source={require('./../public/img/user.png')} style={styles.icon}/>
+                            <TouchableOpacity onPress={() => Actions.profile()}>
+                                <Image source={require('./../public/img/user.png')} style={styles.icon}/>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.button}>
                             <View style={[styles.circle, styles.circle1, styles.shadow]}>
