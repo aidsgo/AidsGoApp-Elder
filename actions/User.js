@@ -33,10 +33,11 @@ export const updateLocation = (location) => {
     }
 };
 
-export const userEnter = (action, phoneNumber, password, serialNumber, address) => {
+export const userEnter = (action, phoneNumber, password, name, serialNumber, address) => {
     const fetchURL = (action === 'logIn') ? 'http://localhost:3000/elders/login' : 'http://localhost:3000/elders/sign_up';
     const body = JSON.stringify(
         {
+            "name": name,
             "phone_number": phoneNumber,
             "password": password,
             "serial_number": serialNumber,
@@ -62,6 +63,7 @@ export const userEnter = (action, phoneNumber, password, serialNumber, address) 
 };
 
 export const updateProfile = (user) => {
+    //const fetchURL = 'https://aids-go-api.herokuapp.com/elders/update';
     const fetchURL = 'http://localhost:3000/elders/update';
     const body = JSON.stringify(
         {user: user}

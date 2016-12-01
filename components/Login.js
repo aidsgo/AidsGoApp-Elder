@@ -27,6 +27,7 @@ class Login extends Component {
             errorModal: false,
             phoneNumber: '',
             password: '',
+            name: '',
             serialNumber: '',
             address: ''
         };
@@ -73,8 +74,8 @@ class Login extends Component {
     }
 
     login() {
-        const {action, phoneNumber, password, serialNumber, address} = this.state;
-        this.props.userEnter(action, phoneNumber, md5.str_md5(password), serialNumber, address);
+        const {action, phoneNumber, password, name, serialNumber, address} = this.state;
+        this.props.userEnter(action, phoneNumber, md5.str_md5(password), name, serialNumber, address);
     }
 
     handleInput(value, type) {
@@ -84,6 +85,9 @@ class Login extends Component {
                 break;
             case 'password':
                 this.setState({ password: value });
+                break;
+            case 'name':
+                this.setState({ name: value });
                 break;
             case 'serialNumber':
                 this.setState({ serialNumber: value });
@@ -131,27 +135,29 @@ class Login extends Component {
                                     </TextInput>
                                 </View>
                                 {this.state.action === 'signUp' ?
-                                  <View style={{marginTop: 6}}>
-                                    <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                        <Image source={require('./../public/img/serialNumber.png')} style={styles.icon}/>
-                                        <View style={styles.upright}/>
-                                        <TextInput style={styles.input} placeholder='  IoT 序 列 号' placeholderTextColor='white'
-                                                   onChangeText={(value) => {this.handleInput(value, 'serialNumber')}}>
-
-                                        </TextInput>
-                                    </View>
-                                    <View style={[styles.loginput, styles.size, styles.shadow, styles.password]}>
-                                        <Image source={require('./../public/img/address.png')} style={styles.icon}/>
-                                        <View style={styles.upright}/>
-                                        <TextInput style={styles.input} placeholder='  家 庭 地 址' placeholderTextColor='white'
-                                                   onChangeText={(value) => {this.handleInput(value, 'address')}}>
-
-                                        </TextInput>
-                                    </View>
+                                  <View style={[styles.info, {marginTop: 6}]}>
+                                      <View style={[styles.infoInput, {marginTop: 4}]}>
+                                          <Text style={styles.saveText}>用   户   名</Text>
+                                          <TextInput style={styles.textInput}
+                                                     onChangeText={(value) => {this.handleInput(value, 'name')}}>
+                                          </TextInput>
+                                      </View>
+                                      <View style={[styles.infoInput]}>
+                                          <Text style={styles.saveText}>序   列   号</Text>
+                                          <TextInput style={styles.textInput}
+                                                     onChangeText={(value) => {this.handleInput(value, 'serialNumber')}}>
+                                          </TextInput>
+                                      </View>
+                                      <View style={[styles.infoInput]}>
+                                          <Text style={styles.saveText}>家 庭 地 址</Text>
+                                          <TextInput style={styles.textInput}
+                                                     onChangeText={(value) => {this.handleInput(value, 'address')}}>
+                                          </TextInput>
+                                      </View>
                                   </View> : null
                                 }
 
-                                <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button]}
+                                <TouchableOpacity style={[styles.loginput, styles.size, styles.shadow, styles.button, this.state.action === 'signUp'? {marginTop: 6} : {} ]}
                                                   onPress={() => this.login()}>
                                     <Text style={styles.loginText}>{this.state.action === 'logIn' ? '登      录' : '注      册'}</Text>
                                 </TouchableOpacity>
@@ -247,6 +253,34 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 14,
         backgroundColor: 'rgba(255,255,255,0.5)'
+    },
+    info: {
+        alignSelf: 'center',
+        width: width / 1.5,
+        height: height/6.5,
+        borderRadius: 14,
+        backgroundColor: 'rgba(255,255,255,0.5)'
+    },
+    infoInput: {
+        flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        flexDirection:'row',
+        position: 'relative',
+        height: 30
+    },
+    saveText: {
+        marginTop: 8,
+        marginLeft: 20,
+        color: 'white'
+    },
+    textInput: {
+        position: 'absolute',
+        right: 12,
+        width: width / 2.6,
+        height: 25,
+        marginTop: 5,
+        backgroundColor: 'rgba(255,255,255,0.4)',
+        color: '#53585F'
     },
     username: {
         marginTop: height / 16

@@ -10,8 +10,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        userEnter: (action, phoneNumber, password, serialNumber, address) => {
-            dispatch(userEnter(action, phoneNumber, password, serialNumber, address))
+        userEnter: (action, phoneNumber, password, name, serialNumber, address) => {
+            dispatch(userEnter(action, phoneNumber, password, name, serialNumber, address))
         },
         updateLocation: (location) => {
             dispatch(updateLocation(location))
