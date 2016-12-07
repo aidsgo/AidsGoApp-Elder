@@ -10,8 +10,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        updateProfile: (user) => {
-            dispatch(updateProfile(user))
+        updateProfile: (user, userToken) => {
+            dispatch(updateProfile(user, userToken))
         }
     }
 };

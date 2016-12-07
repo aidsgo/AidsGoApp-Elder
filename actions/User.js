@@ -62,7 +62,7 @@ export const userEnter = (action, phoneNumber, password, name, serialNumber, add
     }
 };
 
-export const updateProfile = (user) => {
+export const updateProfile = (user, userToken) => {
     //const fetchURL = 'https://aids-go-api.herokuapp.com/elders/update';
     const fetchURL = 'http://localhost:3000/elders/update';
     const body = JSON.stringify(
@@ -72,7 +72,8 @@ export const updateProfile = (user) => {
         method: 'PUT',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': userToken
         },
         credentials: 'same-origin',
         body

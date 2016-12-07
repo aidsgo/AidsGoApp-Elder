@@ -36,7 +36,7 @@ class Profile extends Component {
             birthday: birthday,
             emergency_call: {phone: phone, pmc_phone: pmcPhone}
         };
-        this.props.updateProfile(user);
+        this.props.updateProfile(user, this.props.user.profile.token);
     }
 
     handleInput(value, type) {
