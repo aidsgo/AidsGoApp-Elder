@@ -79,7 +79,7 @@ class Profile extends Component {
                                 </View>
                                 <View style={styles.profile}>
                                     <View style={[styles.profileInput]}>
-                                        <Text style={styles.saveText}>姓        名</Text>
+                                        <Text style={styles.saveText}>用  户  名</Text>
                                         <TextInput style={styles.input}
                                                    onChangeText={(value) => {this.handleInput(value, 'name')}}>
                                         </TextInput>
